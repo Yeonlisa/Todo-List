@@ -36,13 +36,21 @@ const ListScreen: React.FC<Props> = () => {
             })
         );
     };
+
+    const handleClearClick = () => 
+        setTasks(tasks => tasks.filter(task => !task.isComplete))
     
     return (
         <div>
             <div>
                 {tasks.map((task) => (
                     <div key={task.id}>
-                        <input type="checkbox" checked={task.isComplete} onChange={handleCompleteChange(task)}/>{task.label}
+                        <input 
+                            type="checkbox" 
+                            checked={task.isComplete} 
+                            onChange={handleCompleteChange(task)}
+                        />
+                        {task.label}
                     </div>
                 ))}
             </div>
@@ -51,6 +59,9 @@ const ListScreen: React.FC<Props> = () => {
                 onChange={handleNewTaskLabelChange} 
                 onKeyPress={handleNewTaskKeyPress} 
             />
+            <div>
+                <button onClick={handleClearClick}>clear completed</button>
+            </div>
         </div>
     );
 };
