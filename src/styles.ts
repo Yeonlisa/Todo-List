@@ -9,4 +9,7 @@ export const GlobalStyle = createGlobalStyle`
         background: #10414C;
         color: #F0EDCC;
     }
+    body, input, button {
+        font-family: 'UhBeecharming';
+    }
 `;

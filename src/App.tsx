@@ -7,6 +7,7 @@ import useLocalStorage from './hooks/use-local-storage';
 import TaskContext from './contexts/task-store';
 import styled from 'styled-components';
 import { colors, GlobalStyle } from './styles';
+import GlobalFonts from './fonts/font'
 
 const Layout = styled.div`
   align-items: center;
@@ -52,6 +53,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <GlobalFonts />
       <BrowserRouter>
         <TaskContext.Provider value={[tasks, setTasks]}>
           <Layout>
