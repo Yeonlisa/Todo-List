@@ -1,7 +1,6 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { nanoid } from 'nanoid';
 
-
 type Props = {};
 
 type Task = {
@@ -27,7 +26,7 @@ const ListScreen: React.FC<Props> = () => {
         }
     };
 
-    const handleCompleteChange = (handledTask: Task) => (e: ChangeEvent<HTMLInputElement>) => {
+    const handleTaskCompleteChange = (handledTask: Task) => (e: ChangeEvent<HTMLInputElement>) => {
         setTasks(tasks => 
             tasks.map(task => {
                 if(task.id === handledTask.id) 
@@ -35,6 +34,10 @@ const ListScreen: React.FC<Props> = () => {
                 return task;
             })
         );
+    };
+
+    const handleTaskDeleteClick = (handledTask: Task) => () => {
+        setTasks(tasks => tasks.filter(task => task.id !== handledTask.id))
     };
 
     const handleClearClick = () => 
@@ -48,9 +51,10 @@ const ListScreen: React.FC<Props> = () => {
                         <input 
                             type="checkbox" 
                             checked={task.isComplete} 
-                            onChange={handleCompleteChange(task)}
+                            onChange={handleTaskCompleteChange(task)}
                         />
                         {task.label}
+                        <button onClick={handleTaskDeleteClick(task)}>delete</button>
                     </div>
                 ))}
             </div>
