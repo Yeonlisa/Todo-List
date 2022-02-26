@@ -1,16 +1,27 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
+import FocusScreen from './screens/FocusScreen';
 import ListScreen from './screens/ListScreen';
 
 function App() {
   return (
     <BrowserRouter>
+      <nav>
+        <NavLink exact to="/" activeStyle={{ fontWeight: 'bold' }}>
+          List
+        </NavLink>{' '}
+        -{' '}
+        <NavLink to="/focus" activeStyle={{ fontWeight: 'bold' }}>
+          Focus
+        </NavLink>
+      </nav>
+      <br />
       <Switch>
         <Route exact path="/">
           <ListScreen />
         </Route>
         <Route path="/focus">
-          <div>Focus view</div>
+          <FocusScreen />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -52,7 +52,7 @@ const ListScreen: React.FC<Props> = () => {
                             type="checkbox" 
                             checked={task.isComplete} 
                             onChange={handleTaskCompleteChange(task)}
-                        />
+                        />{' '}
                         {task.label}
                         <button onClick={handleTaskDeleteClick(task)}>delete</button>
                     </div>
