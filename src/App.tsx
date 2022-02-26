@@ -5,16 +5,17 @@ import ListScreen from './screens/ListScreen';
 import { Task } from './types';
 import { shuffle } from 'lodash';
 import { nanoid } from 'nanoid';
+import useLocalStorage from './hooks/use-local-storage';
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useLocalStorage<Task[]>('tasks', []);
   const [focusedTaskId, setFocusedTaskId] = useState<string | undefined>(
     undefined
   );
 
   const addTask = (task: Pick<Task, 'label'>) => {
     const id = nanoid();
-    setTasks(tasks => [
+    setTasks((tasks) => [
       ...tasks, 
       { id, label: task.label, isComplete: false },
     ]);
